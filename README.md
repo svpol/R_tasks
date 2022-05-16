@@ -1,1 +1,1 @@
-# R_tasks
+Example of tasks solved using R.
