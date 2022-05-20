@@ -14,3 +14,14 @@ lin_mod <- function(test_data){
   fit <- lm(test_data[[1]] ~ test_data[[2]])
   return(fit$coefficients)
 }
+
+# Task taken from: https://stepik.org/lesson/26186/step/4?thread=solutions&unit=8128
+# Write most_significant function which accepts a dataframe with any number of variables, where each variable is a nucleotide sequence.
+# The function should check the null hypothesis that all nucleotides (A, T, G, C) can be met within the sequense with equal probability.
+# The function shoul return a vector with the name(s) of the variable(s) where the minimal p-value was calculated for chi-square check of the null hypothesis.
+
+most_significant <- function(df){
+  p_values <- apply(df, 2, function(df) chisq.test(table(df))$p.value)
+  min_p <- which(p_values == min(p_values))
+  return(colnames(df)[min_p])
+}
