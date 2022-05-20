@@ -21,7 +21,7 @@ lin_mod <- function(test_data){
 # The function shoul return a vector with the name(s) of the variable(s) where the minimal p-value was calculated for chi-square check of the null hypothesis.
 
 most_significant <- function(df){
-  p_values <- apply(df, 2, function(df) chisq.test(table(df))$p.value)
+  p_values <- apply(df, 2, function(x) chisq.test(table(x))$p.value)
   min_p <- which(p_values == min(p_values))
   return(colnames(df)[min_p])
 }
