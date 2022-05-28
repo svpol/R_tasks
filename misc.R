@@ -25,3 +25,10 @@ most_significant <- function(df){
   min_p <- which(p_values == min(p_values))
   return(colnames(df)[min_p])
 }
+                    
+# Task taken from: https://stepik.org/lesson/31102/step/5?unit=11515
+get_negative_values <- function(df) {
+  neg_data <- apply(df, 2, function(x) x[x < 0 & is.na(x) == FALSE])
+  neg_data <- neg_data[sapply(neg_data,length)>0]
+  return(neg_data)
+}
