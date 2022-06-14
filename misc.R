@@ -49,3 +49,15 @@ smart_cor <- function(test_data){
   }
 }
 
+# Task taken from: https://stepik.org/lesson/11508/step/15?unit=2531
+# Build a scatterplot on the built-in data iris and save it to the variable my_plot. 
+# X-axis - variable Sepal.Width
+# Y-axis - variable Petal.Width
+# Dot color - variable Species
+# Also add linear smoothing for each group of observation by the variable Species.
+# The plot should look like this: https://github.com/svpol/R_tasks/blob/main/iris_plot.png
+library(ggplot2)
+
+my_plot <- ggplot(iris, aes(x = Sepal.Width, y = Petal.Width, group = Species, col = Species))+
+  geom_point(size = 3)+
+  geom_smooth(method = "lm") 
